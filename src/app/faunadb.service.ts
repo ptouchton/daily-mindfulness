@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Client } from 'faunadb';
-import { Observable, from } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class FaunadbService {
 
   constructor() { }
 
-  getUserClient(currentUser): Observable<any> {
-    return from(new Client({ secret: currentUser[AUTH_PROP_KEY]}));
+  getUserClient$(currentUser): Observable<any> {
+    return of(new Client({ secret: currentUser[AUTH_PROP_KEY]}));
   }
 }
