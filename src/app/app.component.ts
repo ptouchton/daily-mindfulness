@@ -12,13 +12,14 @@ import { Subject, EMPTY } from 'rxjs';
 })
 export class AppComponent {
 
-  pageTitle = 'Daily Mindfulness';
+  pageTitle = 'Daily Mindfulness2';
   loading = true;
 
   private errorMessageSubject = new Subject<string>();
   errorMessage$ = this.errorMessageSubject.asObservable();
 
   get isLoggedIn(): boolean {
+    console.log(`loggedIn: ${this.authService.loggedIn}`);
     return this.authService.loggedIn;
   }
 
@@ -60,9 +61,12 @@ export class AppComponent {
     }
   }
 
+  logIn(): void {
+    this.authService.login();
+  }
+
   logOut(): void {
     this.authService.logout();
     console.log('Log out');
-    this.router.navigateByUrl('/welcome');
   }
 }
