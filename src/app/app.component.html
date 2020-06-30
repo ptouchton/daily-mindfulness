@@ -5,7 +5,7 @@
    <ul class="navbar-nav ml-auto">
     <li class="nav-item"
         *ngIf="isLoggedIn">
-      <a class="nav-link" *ngIf="userName$ | async as userName">Welcome {{ userName }}</a>
+      <a class="nav-link" *ngIf="userName$ | async as userName">Welcome {{ userName.name }}</a>
     </li>
     <li class="nav-item"
         *ngIf="!isLoggedIn">

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthService } from './services/auth.service';
 import { Router, Event, NavigationError, NavigationStart, NavigationEnd, NavigationCancel } from '@angular/router';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Subject, EMPTY } from 'rxjs';
 
 @Component( {
@@ -19,7 +19,6 @@ export class AppComponent {
   errorMessage$ = this.errorMessageSubject.asObservable();
 
   get isLoggedIn(): boolean {
-    console.log(`loggedIn: ${this.authService.loggedIn}`);
     return this.authService.loggedIn;
   }
 
@@ -33,6 +32,7 @@ export class AppComponent {
   }
 
   userName$ = this.authService.userProfile$.pipe(
+    tap(user => console.log(user)),
     catchError(err => {
       this.errorMessageSubject.next(err);
       return EMPTY;
