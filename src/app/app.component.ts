@@ -32,7 +32,6 @@ export class AppComponent {
   }
 
   userName$ = this.authService.userProfile$.pipe(
-    tap(user => console.log(user)),
     catchError(err => {
       this.errorMessageSubject.next(err);
       return EMPTY;
