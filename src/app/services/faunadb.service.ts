@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Client, query, PageHelper, values } from 'faunadb';
-import { Observable, of } from 'rxjs';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 interface FaunaResponse {
   after?: [];
   data?: [];
 }
 const AUTH_PROP_KEY = 'https://faunad.com/id/secret';
+
+@Injectable({
+  providedIn: 'root'
+})
+
 
 export class FaunadbService {
 
